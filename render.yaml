@@ -7,7 +7,8 @@ services:
     startCommand: npm run db:push && npm start
     envVars:
       - key: DATABASE_URL
-        # Value will be requested by Render during Blueprint setup
+        value: "REPLACE_WITH_YOUR_POSTGRES_URL"
       - key: NODE_ENV
         value: production
+
 

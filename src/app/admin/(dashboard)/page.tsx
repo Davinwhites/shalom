@@ -20,8 +20,8 @@ export default async function DashboardPage() {
     });
 
     const stats = [
-        { label: "Curriculum Plans", value: plansCount, icon: PenTool, color: "text-blue-400" },
-        { label: "Gallery Items", value: designsCount, icon: FileText, color: "text-emerald-400" },
+        { label: "Academic Plans", value: plansCount, icon: PenTool, color: "text-blue-400" },
+        { label: "Event Photos", value: designsCount, icon: FileText, color: "text-emerald-400" },
         { label: "Learning Resources", value: resourcesCount, icon: Boxes, color: "text-amber-400" },
         { label: "Total Views", value: totalViews.toLocaleString(), icon: TrendingUp, color: "text-purple-400" },
     ];
@@ -59,11 +59,11 @@ export default async function DashboardPage() {
                             <ArrowRight className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-all" />
                         </Link>
                         <Link href="/admin/plans" className="flex items-center justify-between w-full px-4 py-3 bg-gray-800 hover:bg-gray-700 rounded-xl transition-all group">
-                            <span>Update Curriculum Plans</span>
+                            <span>Update Academic Plans</span>
                             <ArrowRight className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-all" />
                         </Link>
                         <Link href="/admin/designs" className="flex items-center justify-between w-full px-4 py-3 bg-gray-800 hover:bg-gray-700 rounded-xl transition-all group">
-                            <span>Manage Gallery Showcase</span>
+                            <span>Manage School Events</span>
                             <ArrowRight className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-all" />
                         </Link>
                     </div>

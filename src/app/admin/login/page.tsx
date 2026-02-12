@@ -52,7 +52,7 @@ export default function LoginPage() {
             </div>
             <div className="max-w-md w-full bg-gray-800 p-8 rounded-2xl shadow-2xl border border-gray-700">
                 <h1 className="text-3xl font-bold mb-6 text-center bg-gradient-to-r from-blue-400 to-emerald-400 bg-clip-text text-transparent">
-                    Engineer Admin
+                    Shalom Admin
                 </h1>
                 {error && (
                     <div className="bg-red-500/10 border border-red-500 text-red-500 p-3 rounded-lg mb-4 text-sm">

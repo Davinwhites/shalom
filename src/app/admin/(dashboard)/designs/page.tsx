@@ -119,7 +119,7 @@ export default function DesignsManager() {
         <div className="space-y-8">
             <BackButton />
             <div>
-                <h1 className="text-3xl font-bold">School Gallery Showcase</h1>
+                <h1 className="text-3xl font-bold">School Events Gallery</h1>
                 <p className="text-gray-400 mt-2">Share school events and student activity highlights with high-quality photos.</p>
             </div>
 
@@ -127,7 +127,7 @@ export default function DesignsManager() {
                 <div className="flex items-center justify-between mb-4">
                     <h2 className={`text-lg font-bold flex items-center gap-2 ${editingDesign ? 'text-orange-400' : 'text-emerald-400'}`}>
                         {editingDesign ? <PenTool className="w-5 h-5" /> : <Plus className="w-5 h-5" />}
-                        {editingDesign ? 'Edit Showcase Item' : 'Add New Showcase'}
+                        {editingDesign ? 'Edit Event Details' : 'Add New School Event'}
                     </h2>
                     {editingDesign && (
                         <button
@@ -142,10 +142,10 @@ export default function DesignsManager() {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div className="space-y-4">
                             <div>
-                                <label className="block text-sm font-medium text-gray-400 mb-1">Project Title</label>
+                                <label className="block text-sm font-medium text-gray-400 mb-1">Event Title</label>
                                 <input
                                     type="text"
-                                    placeholder="e.g., Waterfront Modern Residence"
+                                    placeholder="e.g., Annual Sports Day 2025"
                                     value={formData.title}
                                     onChange={(e) => setFormData({ ...formData, title: e.target.value })}
                                     className="w-full bg-gray-950 border border-gray-700 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-emerald-500"
@@ -206,7 +206,7 @@ export default function DesignsManager() {
                         {loading ? "Saving..." : (
                             <>
                                 {editingDesign ? <PenTool className="w-5 h-5" /> : <Plus className="w-5 h-5" />}
-                                {editingDesign ? "Update Design Details" : "Publish Design"}
+                                {editingDesign ? "Update Event Details" : "Publish Event"}
                             </>
                         )}
                     </button>
@@ -228,20 +228,20 @@ export default function DesignsManager() {
                                     onClick={() => handleEdit(design)}
                                     className="px-3 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg shadow-xl flex items-center gap-2 text-xs font-bold transition-all transform hover:scale-105"
                                 >
-                                    <PenTool className="w-4 h-4" /> Edit Design
+                                    <PenTool className="w-4 h-4" /> Edit Event
                                 </button>
                                 <button
                                     onClick={() => handleDelete(design.id)}
                                     className="px-3 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg shadow-xl flex items-center gap-2 text-xs font-bold transition-all transform hover:scale-105"
                                 >
-                                    <Trash2 className="w-4 h-4" /> Delete Project
+                                    <Trash2 className="w-4 h-4" /> Delete Event
                                 </button>
                             </div>
                         </div>
                         <div className="p-4">
                             <div className="flex items-center gap-2 mb-2 text-emerald-400">
                                 <Layout className="w-4 h-4" />
-                                <span className="text-[10px] font-black uppercase tracking-widest">Gallery Item</span>
+                                <span className="text-[10px] font-black uppercase tracking-widest">School Event</span>
                             </div>
                             <h3 className="font-bold text-gray-100">{design.title}</h3>
                             <p className="text-xs text-gray-400 mt-2 line-clamp-2">{design.description}</p>

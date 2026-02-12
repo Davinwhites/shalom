@@ -22,7 +22,7 @@ const menuItems = [
     { icon: User, label: "About Page", href: "/admin/about" },
     { icon: Boxes, label: "Learning Resources", href: "/admin/resources" },
     { icon: PenTool, label: "Academic Plans", href: "/admin/plans" },
-    { icon: FileText, label: "School Gallery", href: "/admin/designs" },
+    { icon: FileText, label: "School Events", href: "/admin/designs" },
     { icon: Phone, label: "Contact Info", href: "/admin/contact" },
     { icon: Settings, label: "Settings", href: "/admin/settings" },
 ];

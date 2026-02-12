@@ -32,8 +32,8 @@ export default async function Footer() {
                     <ul className="space-y-3 text-sm text-gray-400">
                         <li><Link href="/" className="hover:text-blue-400 transition-colors">Home</Link></li>
                         <li><Link href="/about" className="hover:text-blue-400 transition-colors">About Me</Link></li>
-                        <li><Link href="/plans" className="hover:text-blue-400 transition-colors">New Plans</Link></li>
-                        <li><Link href="/designs" className="hover:text-blue-400 transition-colors">Design Showcase</Link></li>
+                        <li><Link href="/plans" className="hover:text-blue-400 transition-colors">Academic Plans</Link></li>
+                        <li><Link href="/designs" className="hover:text-blue-400 transition-colors">School Events</Link></li>
                     </ul>
                 </div>
 

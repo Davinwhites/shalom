@@ -119,7 +119,7 @@ export default function PlansManager() {
         <div className="space-y-8">
             <BackButton />
             <div>
-                <h1 className="text-3xl font-bold">School Activity Plans</h1>
+                <h1 className="text-3xl font-bold">School Academic Plans</h1>
                 <p className="text-gray-400 mt-2">Upload and manage school curricular activities and lesson plans.</p>
             </div>
 
@@ -127,7 +127,7 @@ export default function PlansManager() {
                 <div className="flex items-center justify-between mb-4">
                     <h2 className={`text-lg font-bold flex items-center gap-2 ${editingPlan ? 'text-orange-400' : 'text-blue-400'}`}>
                         {editingPlan ? <PenTool className="w-5 h-5" /> : <Plus className="w-5 h-5" />}
-                        {editingPlan ? 'Edit Activity Plan' : 'Add New Plan'}
+                        {editingPlan ? 'Edit Academic Plan' : 'Add New Academic Plan'}
                     </h2>
                     {editingPlan && (
                         <button
@@ -206,7 +206,7 @@ export default function PlansManager() {
                         {loading ? "Saving..." : (
                             <>
                                 {editingPlan ? <PenTool className="w-5 h-5" /> : <Plus className="w-5 h-5" />}
-                                {editingPlan ? "Update Plan Details" : "Publish New Plan"}
+                                {editingPlan ? "Update Plan Details" : "Publish Academic Plan"}
                             </>
                         )}
                     </button>
@@ -240,14 +240,14 @@ export default function PlansManager() {
                                     onClick={() => handleDelete(plan.id)}
                                     className="px-3 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg shadow-xl flex items-center gap-2 text-xs font-bold transition-all transform hover:scale-105"
                                 >
-                                    <Trash2 className="w-4 h-4" /> Delete Project
+                                    <Trash2 className="w-4 h-4" /> Delete Plan
                                 </button>
                             </div>
                         </div>
                         <div className="p-5">
                             <div className="flex items-center gap-2 mb-2">
                                 <PenTool className="w-4 h-4 text-blue-400" />
-                                <span className="text-xs font-bold text-gray-500 uppercase tracking-widest">School Plan</span>
+                                <span className="text-xs font-bold text-gray-500 uppercase tracking-widest">Academic Plan</span>
                             </div>
                             <h3 className="text-xl font-bold text-gray-100">{plan.title}</h3>
                             <p className="text-sm text-gray-400 mt-2 line-clamp-2">{plan.description}</p>

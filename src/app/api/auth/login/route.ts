@@ -76,6 +76,20 @@ export async function POST(req: NextRequest) {
             }
         }
 
+        // Seed Staff if empty
+        const staffCount = await prisma.staffMember.count();
+        if (staffCount === 0) {
+            console.log("Seeding default staff...");
+            await prisma.staffMember.createMany({
+                data: [
+                    { name: "Mrs. Sarah Namasoko", title: "Principal", phone: "+256 701 000000", order: 1 },
+                    { name: "Mr. James Okello", title: "Administrator", phone: "+256 702 000000", order: 2 },
+                    { name: "Ms. Juliet Atieno", title: "Head Teacher", phone: "+256 703 000000", order: 3 },
+                    { name: "Mr. David Mukasa", title: "Bursar", phone: "+256 704 000000", order: 4 },
+                ]
+            });
+        }
+
 
         if (!admin) {
             return NextResponse.json({ message: "Admin initialization failed" }, { status: 500 });

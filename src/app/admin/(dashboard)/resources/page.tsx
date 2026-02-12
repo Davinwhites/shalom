@@ -63,8 +63,8 @@ export default function ResourcesManager() {
         <div className="space-y-8">
             <BackButton />
             <div>
-                <h1 className="text-3xl font-bold">Manage Resources</h1>
-                <p className="text-gray-400 mt-2">Add technical documents, links, and guides.</p>
+                <h1 className="text-3xl font-bold">Academic Resources</h1>
+                <p className="text-gray-400 mt-2">Add school calendars, curriculum guides, and learning materials.</p>
             </div>
 
             <div className="bg-gray-900 border border-gray-800 rounded-2xl p-6 shadow-sm">
@@ -102,7 +102,7 @@ export default function ResourcesManager() {
                     <button
                         type="submit"
                         disabled={loading}
-                        className="bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl transition-all disabled:opacity-50"
+                        className="bg-amber-600 hover:bg-amber-700 text-white font-bold rounded-xl transition-all disabled:opacity-50"
                     >
                         {loading ? "Adding..." : "Add Resource"}
                     </button>

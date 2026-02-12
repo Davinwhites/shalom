@@ -49,8 +49,8 @@ export default function ContactEditor() {
         <div className="max-w-4xl mx-auto space-y-6">
             <BackButton />
             <div>
-                <h1 className="text-3xl font-bold">Contact Information</h1>
-                <p className="text-gray-400 mt-2">Manage how people reach out to you.</p>
+                <h1 className="text-3xl font-bold">School Contact Details</h1>
+                <p className="text-gray-400 mt-2">Manage how parents and the community can reach Shalom Kindergarten.</p>
             </div>
 
             <div className="bg-gray-900 border border-gray-800 rounded-2xl p-8 shadow-sm">
@@ -119,10 +119,10 @@ export default function ContactEditor() {
                     <button
                         type="submit"
                         disabled={loading}
-                        className="flex items-center justify-center gap-2 w-full bg-gray-100 hover:bg-white text-gray-900 font-bold py-3 rounded-xl shadow-lg transition-all disabled:opacity-50"
+                        className="flex items-center justify-center gap-2 w-full bg-amber-600 hover:bg-amber-700 text-white font-bold py-3 rounded-xl shadow-lg transition-all disabled:opacity-50"
                     >
                         <Save className="w-5 h-5" />
-                        {loading ? "Updating..." : "Save Contact Info"}
+                        {loading ? "Updating..." : "Update Contact Info"}
                     </button>
                 </form>
             </div>

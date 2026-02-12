@@ -98,7 +98,7 @@ export default function Navbar() {
                             onClick={() => setMobileMenuOpen(false)}
                             className={cn(
                                 "text-lg font-medium",
-                                pathname === link.href ? "text-blue-400" : "text-gray-400"
+                                pathname === link.href ? "text-blue-400" : "text-gray-200"
                             )}
                         >
                             {link.label === "About" ? "About Us" : link.label}
@@ -107,7 +107,7 @@ export default function Navbar() {
                     <Link
                         href="/admin/login"
                         onClick={() => setMobileMenuOpen(false)}
-                        className="text-lg font-medium text-gray-400 flex items-center gap-2"
+                        className="text-lg font-medium text-gray-200 flex items-center gap-2"
                     >
                         <ShieldCheck className="w-5 h-5" /> Admin Login
                     </Link>

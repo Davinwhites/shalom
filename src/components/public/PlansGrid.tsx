@@ -45,8 +45,8 @@ export default function PlansGrid({ plans }: { plans: Plan[] }) {
                                 </div>
                             </div>
                             <div className="p-10">
-                                <h3 className="text-2xl font-bold mb-4">{plan.title}</h3>
-                                <p className="text-gray-400 leading-relaxed mb-6 line-clamp-3">
+                                <h3 className="text-2xl font-bold mb-4 text-white">{plan.title}</h3>
+                                <p className="text-gray-300 leading-relaxed mb-6 line-clamp-3">
                                     {plan.description}
                                 </p>
                                 <button

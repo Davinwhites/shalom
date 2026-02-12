@@ -20,7 +20,7 @@ export default async function AboutPage() {
                     <div className="mb-20">
                         <h1 className="text-4xl md:text-8xl font-black mb-8 leading-tight tracking-tighter">
                             Nurturing <br />
-                            <span className="text-gray-500">Potential.</span>
+                            <span className="text-gray-400">Potential.</span>
                         </h1>
                         <p className="max-w-2xl text-xl text-gray-400 leading-relaxed">
                             A look into our educational journey, mission, and the commitment we have to every pupil's growth.
@@ -35,7 +35,7 @@ export default async function AboutPage() {
                                     <div className="w-12 h-12 bg-blue-500/10 border border-blue-500/20 rounded-xl flex items-center justify-center text-blue-400">
                                         <User className="w-6 h-6" />
                                     </div>
-                                    <h2 className="text-2xl font-bold uppercase tracking-widest text-gray-500">Biography</h2>
+                                    <h2 className="text-2xl font-bold uppercase tracking-widest text-gray-400">Biography</h2>
                                 </div>
                                 <div className="bg-gray-900/50 border border-gray-800 rounded-[2rem] p-8 md:p-12 relative overflow-hidden">
                                     <div className="absolute top-0 right-0 p-8 opacity-5">
@@ -53,7 +53,7 @@ export default async function AboutPage() {
                                     <div className="w-12 h-12 bg-emerald-500/10 border border-emerald-500/20 rounded-xl flex items-center justify-center text-emerald-400">
                                         <Award className="w-6 h-6" />
                                     </div>
-                                    <h2 className="text-2xl font-bold uppercase tracking-widest text-gray-500">Our History</h2>
+                                    <h2 className="text-2xl font-bold uppercase tracking-widest text-gray-400">Our History</h2>
                                 </div>
                                 <div className="bg-gray-900/50 border border-gray-800 rounded-[2rem] p-8 md:p-12 relative overflow-hidden group">
                                     <div className="absolute -left-6 top-0 bottom-0 w-1 bg-emerald-500/50 group-hover:bg-emerald-500 transition-colors hidden md:block" />
@@ -68,7 +68,7 @@ export default async function AboutPage() {
                                     <div className="w-12 h-12 bg-emerald-500/10 border border-emerald-500/20 rounded-xl flex items-center justify-center text-emerald-400">
                                         <Briefcase className="w-6 h-6" />
                                     </div>
-                                    <h2 className="text-2xl font-bold uppercase tracking-widest text-gray-500">Experience</h2>
+                                    <h2 className="text-2xl font-bold uppercase tracking-widest text-gray-400">Experience</h2>
                                 </div>
                                 <div className="bg-gray-900/50 border border-gray-800 rounded-[2rem] p-8 md:p-12">
                                     <p className="text-lg text-gray-300 leading-relaxed whitespace-pre-wrap">
@@ -127,7 +127,7 @@ export default async function AboutPage() {
                                                 member.name.split(' ').map((n: string) => n[0]).join('')
                                             )}
                                         </div>
-                                        <h3 className="text-2xl font-bold mb-2 group-hover:text-blue-400 transition-colors uppercase italic tracking-tighter">{member.name}</h3>
+                                        <h3 className="text-2xl font-bold mb-2 text-white group-hover:text-blue-400 transition-colors uppercase italic tracking-tighter">{member.name}</h3>
                                         <p className="text-blue-500 text-xs font-black uppercase tracking-[0.3em] mb-4 bg-blue-500/10 px-4 py-1 rounded-full">{member.title}</p>
                                         <p className="text-gray-400 font-medium tracking-widest text-sm">{member.phone}</p>
                                     </div>
@@ -175,8 +175,8 @@ export default async function AboutPage() {
                                         </div>
                                         <div className="p-10 flex-1 flex flex-col">
                                             <p className="text-blue-400 text-[10px] font-black uppercase tracking-[0.4em] mb-4">{item.subLabel}</p>
-                                            <h3 className="text-2xl font-bold mb-4 uppercase italic tracking-tighter">{item.title}</h3>
-                                            <p className="text-gray-500 leading-relaxed text-sm flex-1">
+                                            <h3 className="text-2xl font-bold mb-4 text-white uppercase italic tracking-tighter">{item.title}</h3>
+                                            <p className="text-gray-300 leading-relaxed text-sm flex-1">
                                                 {item.description}
                                             </p>
                                         </div>

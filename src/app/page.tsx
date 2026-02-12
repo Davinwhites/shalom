@@ -55,7 +55,7 @@ export default async function HomePage() {
           <div className="max-w-7xl mx-auto px-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
               <div>
-                <h2 className="text-3xl md:text-5xl font-bold mb-8">Nurturing Minds, <br /><span className="text-gray-500">Building bright futures.</span></h2>
+                <h2 className="text-3xl md:text-5xl font-bold mb-8">Nurturing Minds, <br /><span className="text-gray-400">Building bright futures.</span></h2>
                 <p className="text-gray-400 text-lg leading-relaxed mb-8">
                   {home?.aboutShort || "We provide a holistic learning environment where every child is encouraged to discover their potential and excel in all aspects of life."}
                 </p>

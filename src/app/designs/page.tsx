@@ -38,7 +38,7 @@ export default async function DesignsPage() {
                                                 <span className="text-[10px] font-black uppercase tracking-widest">School Life</span>
                                             </div>
                                             <h3 className="text-2xl font-bold text-white mb-2">{design.title}</h3>
-                                            <p className="text-sm text-gray-400 line-clamp-2 mb-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                                            <p className="text-sm text-gray-300 line-clamp-2 mb-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                                                 {design.description}
                                             </p>
                                             <button className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-white group/btn">

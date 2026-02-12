@@ -10,6 +10,8 @@ services:
         value: "postgresql://engineer:nhbSdTZaqYAEb98doo8HHrMw9fStgw07@dpg-d651m3ggjchc73fqqp80-a.oregon-postgres.render.com/engineer_m0ao"
       - key: NODE_ENV
         value: production
+      - key: SESSION_SECRET
+        value: "shalom_secret_key_provide_locally_as_well"
 
 
 

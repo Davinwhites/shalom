@@ -7,8 +7,9 @@ services:
     startCommand: npm run db:push && npm start
     envVars:
       - key: DATABASE_URL
-        value: "REPLACE_WITH_YOUR_POSTGRES_URL"
+        value: "postgresql://engineer:nhbSdTZaqYAEb98doo8HHrMw9fStgw07@dpg-d651m3ggjchc73fqqp80-a.oregon-postgres.render.com/engineer_m0ao"
       - key: NODE_ENV
         value: production
+
 
 

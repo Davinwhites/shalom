@@ -66,6 +66,26 @@ export default function AboutEditor() {
         }
     };
 
+    const handleUpdateStaffState = (id: number, data: any) => {
+        setStaff(prev => prev.map(m => m.id === id ? { ...m, ...data } : m));
+    };
+
+    const persistStaffUpdate = async (id: number) => {
+        const member = staff.find(m => m.id === id);
+        if (!member) return;
+
+        try {
+            await fetch("/api/admin/staff", {
+                method: "PUT",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(member),
+            });
+            // Don't reload everything, just rely on local state being correct
+        } catch (error) {
+            setMessage({ text: "Failed to save staff member", type: "error" });
+        }
+    };
+
     const handleAddStaff = async () => {
         const res = await fetch("/api/admin/staff", {
             method: "POST",
@@ -78,19 +98,29 @@ export default function AboutEditor() {
         }
     };
 
-    const handleUpdateStaff = async (id: number, data: any) => {
-        await fetch("/api/admin/staff", {
-            method: "PUT",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ id, ...data }),
-        });
-        loadData();
-    };
-
     const handleDeleteStaff = async (id: number) => {
         if (!confirm("Are you sure?")) return;
         await fetch(`/api/admin/staff?id=${id}`, { method: "DELETE" });
         loadData();
+    };
+
+    const handleUpdateEnvState = (id: number, data: any) => {
+        setEnvironment(prev => prev.map(e => e.id === id ? { ...e, ...data } : e));
+    };
+
+    const persistEnvUpdate = async (id: number) => {
+        const item = environment.find(e => e.id === id);
+        if (!item) return;
+
+        try {
+            await fetch("/api/admin/environment", {
+                method: "PUT",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(item),
+            });
+        } catch (error) {
+            setMessage({ text: "Failed to save facility", type: "error" });
+        }
     };
 
     const handleAddEnv = async () => {
@@ -103,15 +133,6 @@ export default function AboutEditor() {
             loadData();
             setMessage({ text: "Facility added", type: "success" });
         }
-    };
-
-    const handleUpdateEnv = async (id: number, data: any) => {
-        await fetch("/api/admin/environment", {
-            method: "PUT",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ id, ...data }),
-        });
-        loadData();
     };
 
     const handleDeleteEnv = async (id: number) => {
@@ -220,19 +241,22 @@ export default function AboutEditor() {
                             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 flex-1 w-full">
                                 <input
                                     value={member.name}
-                                    onChange={(e) => handleUpdateStaff(member.id, { name: e.target.value })}
+                                    onChange={(e) => handleUpdateStaffState(member.id, { name: e.target.value })}
+                                    onBlur={() => persistStaffUpdate(member.id)}
                                     placeholder="Name"
                                     className="bg-gray-900 border border-gray-800 rounded-lg px-3 py-2 text-sm focus:border-blue-500 outline-none"
                                 />
                                 <input
                                     value={member.title}
-                                    onChange={(e) => handleUpdateStaff(member.id, { title: e.target.value })}
+                                    onChange={(e) => handleUpdateStaffState(member.id, { title: e.target.value })}
+                                    onBlur={() => persistStaffUpdate(member.id)}
                                     placeholder="Title"
                                     className="bg-gray-900 border border-gray-800 rounded-lg px-3 py-2 text-sm focus:border-blue-500 outline-none"
                                 />
                                 <input
                                     value={member.phone}
-                                    onChange={(e) => handleUpdateStaff(member.id, { phone: e.target.value })}
+                                    onChange={(e) => handleUpdateStaffState(member.id, { phone: e.target.value })}
+                                    onBlur={() => persistStaffUpdate(member.id)}
                                     placeholder="Phone"
                                     className="bg-gray-900 border border-gray-800 rounded-lg px-3 py-2 text-sm focus:border-blue-500 outline-none"
                                 />
@@ -241,7 +265,8 @@ export default function AboutEditor() {
                                     <div className="flex gap-2">
                                         <input
                                             value={member.imageUrl || ""}
-                                            onChange={(e) => handleUpdateStaff(member.id, { imageUrl: e.target.value })}
+                                            onChange={(e) => handleUpdateStaffState(member.id, { imageUrl: e.target.value })}
+                                            onBlur={() => persistStaffUpdate(member.id)}
                                             placeholder="Image URL / Path"
                                             className="flex-1 bg-gray-900 border border-gray-800 rounded-lg px-3 py-2 text-sm focus:border-blue-500 outline-none"
                                         />
@@ -255,7 +280,16 @@ export default function AboutEditor() {
                                                     const file = e.target.files?.[0];
                                                     if (file) {
                                                         const url = await handleUpload(file);
-                                                        if (url) handleUpdateStaff(member.id, { imageUrl: url });
+                                                        if (url) {
+                                                            handleUpdateStaffState(member.id, { imageUrl: url });
+                                                            // For file uploads, persist immediately since user clicked a button
+                                                            const updatedMember = { ...member, imageUrl: url };
+                                                            await fetch("/api/admin/staff", {
+                                                                method: "PUT",
+                                                                headers: { "Content-Type": "application/json" },
+                                                                body: JSON.stringify(updatedMember),
+                                                            });
+                                                        }
                                                     }
                                                 }}
                                             />
@@ -295,7 +329,8 @@ export default function AboutEditor() {
                                     ) : (
                                         <input
                                             value={item.icon || ""}
-                                            onChange={(e) => handleUpdateEnv(item.id, { icon: e.target.value })}
+                                            onChange={(e) => handleUpdateEnvState(item.id, { icon: e.target.value })}
+                                            onBlur={() => persistEnvUpdate(item.id)}
                                             className="w-12 h-12 bg-gray-900 border border-gray-800 rounded-xl text-2xl text-center outline-none focus:border-indigo-500"
                                             placeholder="Icon"
                                         />
@@ -310,13 +345,25 @@ export default function AboutEditor() {
                                                 const file = e.target.files?.[0];
                                                 if (file) {
                                                     const url = await handleUpload(file);
-                                                    if (url) handleUpdateEnv(item.id, { imageUrl: url });
+                                                    if (url) {
+                                                        handleUpdateEnvState(item.id, { imageUrl: url });
+                                                        // Persist immediately on file upload
+                                                        const updatedItem = { ...item, imageUrl: url };
+                                                        await fetch("/api/admin/environment", {
+                                                            method: "PUT",
+                                                            headers: { "Content-Type": "application/json" },
+                                                            body: JSON.stringify(updatedItem),
+                                                        });
+                                                    }
                                                 }
                                             }}
                                         />
                                     </label>
                                     {item.imageUrl && (
-                                        <button onClick={() => handleUpdateEnv(item.id, { imageUrl: null })} className="p-2 text-gray-500 hover:text-red-500">
+                                        <button onClick={() => {
+                                            handleUpdateEnvState(item.id, { imageUrl: null });
+                                            persistEnvUpdate(item.id);
+                                        }} className="p-2 text-gray-500 hover:text-red-500">
                                             <Trash2 className="w-4 h-4" />
                                         </button>
                                     )}
@@ -327,19 +374,22 @@ export default function AboutEditor() {
                             </div>
                             <input
                                 value={item.title}
-                                onChange={(e) => handleUpdateEnv(item.id, { title: e.target.value })}
+                                onChange={(e) => handleUpdateEnvState(item.id, { title: e.target.value })}
+                                onBlur={() => persistEnvUpdate(item.id)}
                                 className="w-full bg-gray-900 border border-gray-800 rounded-lg px-3 py-2 font-bold focus:border-indigo-500 outline-none"
                                 placeholder="Facility Title"
                             />
                             <input
                                 value={item.subLabel}
-                                onChange={(e) => handleUpdateEnv(item.id, { subLabel: e.target.value })}
+                                onChange={(e) => handleUpdateEnvState(item.id, { subLabel: e.target.value })}
+                                onBlur={() => persistEnvUpdate(item.id)}
                                 className="w-full bg-gray-900 border border-gray-800 rounded-lg px-3 py-2 text-xs uppercase tracking-widest text-indigo-400 focus:border-indigo-500 outline-none"
                                 placeholder="Sub Label"
                             />
                             <textarea
                                 value={item.description}
-                                onChange={(e) => handleUpdateEnv(item.id, { description: e.target.value })}
+                                onChange={(e) => handleUpdateEnvState(item.id, { description: e.target.value })}
+                                onBlur={() => persistEnvUpdate(item.id)}
                                 className="w-full bg-gray-900 border border-gray-800 rounded-lg px-3 py-2 text-sm text-gray-400 focus:border-indigo-500 outline-none resize-none"
                                 rows={2}
                                 placeholder="Description"

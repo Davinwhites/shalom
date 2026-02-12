@@ -20,9 +20,9 @@ export default async function DashboardPage() {
     });
 
     const stats = [
-        { label: "Drawn Plans", value: plansCount, icon: PenTool, color: "text-blue-400" },
-        { label: "New Designs", value: designsCount, icon: FileText, color: "text-emerald-400" },
-        { label: "Resources", value: resourcesCount, icon: Boxes, color: "text-amber-400" },
+        { label: "Curriculum Plans", value: plansCount, icon: PenTool, color: "text-blue-400" },
+        { label: "Gallery Items", value: designsCount, icon: FileText, color: "text-emerald-400" },
+        { label: "Learning Resources", value: resourcesCount, icon: Boxes, color: "text-amber-400" },
         { label: "Total Views", value: totalViews.toLocaleString(), icon: TrendingUp, color: "text-purple-400" },
     ];
 
@@ -38,12 +38,7 @@ export default async function DashboardPage() {
                     <div key={i} className="bg-gray-900 border border-gray-800 p-6 rounded-2xl shadow-sm hover:border-amber-500/50 transition-all">
                         <div className="flex items-center justify-between">
                             <div>
-                                <p className="text-gray-500 text-sm font-medium">{
-                                    stat.label === "Drawn Plans" ? "Academic Plans" :
-                                        stat.label === "New Designs" ? "Gallery Items" :
-                                            stat.label === "Resources" ? "Learning Resources" :
-                                                stat.label
-                                }</p>
+                                <p className="text-gray-500 text-sm font-medium">{stat.label}</p>
                                 <h2 className="text-3xl font-bold mt-1">{stat.value}</h2>
                             </div>
                             <div className={`p-3 bg-gray-800 rounded-xl ${stat.color}`}>
@@ -53,6 +48,7 @@ export default async function DashboardPage() {
                     </div>
                 ))}
             </div>
+
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                 <div className="bg-gray-900 border border-gray-800 p-6 rounded-2xl">

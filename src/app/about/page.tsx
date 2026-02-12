@@ -120,9 +120,9 @@ export default async function AboutPage() {
                             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16">
                                 {staff.map((member, i) => (
                                     <div key={member.id} className="flex flex-col items-center text-center group">
-                                        <div className={`w-48 h-48 rounded-full bg-gradient-to-br from-gray-800 to-gray-900 mb-8 flex items-center justify-center text-6xl font-black text-white shadow-[0_20px_50px_rgba(0,0,0,0.3)] transform group-hover:scale-105 transition-all duration-500 border-8 border-gray-900 group-hover:border-blue-500/20 overflow-hidden`}>
+                                        <div className={`w-48 h-48 rounded-full bg-gray-900 mb-8 flex items-center justify-center text-6xl font-black text-white shadow-[0_20px_50px_rgba(0,0,0,0.3)] transform group-hover:scale-105 transition-all duration-500 border-8 border-gray-900 group-hover:border-blue-500/20 overflow-hidden`}>
                                             {member.imageUrl ? (
-                                                <img src={member.imageUrl} alt={member.name} className="w-full h-full object-cover" />
+                                                <img src={member.imageUrl} alt={member.name} className="w-full h-full object-cover brightness-110 saturate-105" />
                                             ) : (
                                                 member.name.split(' ').map((n: string) => n[0]).join('')
                                             )}
@@ -147,7 +147,7 @@ export default async function AboutPage() {
                             <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
                                 {environment.map((item) => (
                                     <div key={item.id} className="bg-gray-900 rounded-[3rem] overflow-hidden group border border-gray-800 hover:border-blue-500/50 transition-all flex flex-col h-full shadow-2xl">
-                                        <div className="aspect-[4/3] bg-gray-800 flex items-center justify-center text-[10rem] group-hover:scale-110 transition-transform duration-1000 relative">
+                                        <div className="aspect-[4/3] flex items-center justify-center text-[10rem] group-hover:scale-110 transition-transform duration-1000 relative">
                                             {item.videoUrl ? (
                                                 <div className="w-full h-full relative z-10">
                                                     {item.videoUrl.includes('youtube.com') || item.videoUrl.includes('youtu.be') ? (
@@ -168,7 +168,7 @@ export default async function AboutPage() {
                                                     )}
                                                 </div>
                                             ) : item.imageUrl ? (
-                                                <img src={item.imageUrl} alt={item.title} className="w-full h-full object-cover" />
+                                                <img src={item.imageUrl} alt={item.title} className="w-full h-full object-cover brightness-110 saturate-105" />
                                             ) : (
                                                 item.icon || "🏫"
                                             )}

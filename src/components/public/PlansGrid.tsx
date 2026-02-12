@@ -20,13 +20,13 @@ export default function PlansGrid({ plans }: { plans: Plan[] }) {
                     plans.map((plan) => (
                         <div key={plan.id} className="group bg-gray-900 border border-gray-800 rounded-[2.5rem] overflow-hidden hover:border-blue-500/30 transition-all shadow-2xl">
                             <div
-                                className="relative aspect-[16/10] overflow-hidden bg-gray-800 cursor-pointer"
+                                className="relative aspect-[16/10] overflow-hidden cursor-pointer"
                                 onClick={() => setSelectedPlan(plan)}
                             >
                                 <img
                                     src={plan.imageUrl}
                                     alt={plan.title}
-                                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000"
+                                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000 brightness-110 saturate-105"
                                 />
                                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
                                     <div className="p-4 bg-white/10 backdrop-blur-md rounded-full text-white">

@@ -101,7 +101,7 @@ export default function Navbar() {
                                 pathname === link.href ? "text-blue-400" : "text-gray-400"
                             )}
                         >
-                            {link.label}
+                            {link.label === "About" ? "About Us" : link.label}
                         </Link>
                     ))}
                     <Link

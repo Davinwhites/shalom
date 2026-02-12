@@ -1,5 +1,8 @@
 "use client";
 
+import { useState, useEffect } from "react";
+import { User, Plus, Trash2, Image as ImageIcon, Briefcase } from "lucide-react";
+import BackButton from "@/components/admin/BackButton";
 import { StaffMemberItem } from "@/components/admin/StaffMemberItem";
 import { EnvironmentItem } from "@/components/admin/EnvironmentItem";
 
@@ -8,6 +11,7 @@ export default function AboutEditor() {
         bio: "",
         mission: "",
         experience: "",
+        history: "",
         aboutShort: ""
     });
     const [staff, setStaff] = useState<any[]>([]);
@@ -32,6 +36,7 @@ export default function AboutEditor() {
                 bio: about.bio || "",
                 mission: about.mission || "",
                 experience: about.experience || "",
+                history: about.history || "",
                 aboutShort: about.aboutShort || ""
             });
             setStaff(await staffRes.json());
@@ -190,7 +195,17 @@ export default function AboutEditor() {
                                 rows={6}
                                 value={aboutData.bio}
                                 onChange={(e) => setAboutData({ ...aboutData, bio: e.target.value })}
-                                className="w-full bg-gray-950 border border-gray-800 rounded-2xl px-4 py-3 focus:border-amber-500 outline-none transition-all"
+                                className="w-full bg-gray-950 border border-gray-800 rounded-2xl px-4 py-3 focus:border-amber-500 outline-none transition-all mb-4"
+                            />
+
+                            <label className="block text-sm font-medium mb-2 text-emerald-400 font-bold uppercase tracking-widest">School History</label>
+                            <p className="text-xs text-gray-500 mb-2 italic">The journey and legacy of Shalom School.</p>
+                            <textarea
+                                rows={6}
+                                value={aboutData.history}
+                                onChange={(e) => setAboutData({ ...aboutData, history: e.target.value })}
+                                className="w-full bg-gray-950 border border-emerald-500/20 rounded-2xl px-4 py-3 focus:border-emerald-500 outline-none transition-all"
+                                placeholder="Our story began..."
                             />
                         </div>
                         <div>

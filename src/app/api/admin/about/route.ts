@@ -36,6 +36,7 @@ export async function PUT(req: NextRequest) {
                 bio: data.bio,
                 mission: data.mission,
                 experience: data.experience,
+                history: data.history,
             },
         });
 

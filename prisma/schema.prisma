@@ -33,6 +33,7 @@ model AboutPage {
   bio       String  @default("Shalom Kindergarten & Primary School is a premier educational institution dedicated to providing a supportive and enriched learning environment for young learners.")
   mission   String  @default("To empower every child with the knowledge, skills, and values they need to thrive in a changing world.")
   experience String @default("Years of dedicated service in nurturing young minds and fostering academic excellence.")
+  history    String @default("Founded with a vision to provide quality education, Shalom has grown from a small nursery into a full-fledged primary school with a legacy of excellence.")
 }
 
 model Resource {

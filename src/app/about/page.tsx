@@ -47,6 +47,22 @@ export default async function AboutPage() {
                                 </div>
                             </section>
 
+                            {/* History Section */}
+                            <section>
+                                <div className="flex items-center gap-4 mb-6">
+                                    <div className="w-12 h-12 bg-emerald-500/10 border border-emerald-500/20 rounded-xl flex items-center justify-center text-emerald-400">
+                                        <Award className="w-6 h-6" />
+                                    </div>
+                                    <h2 className="text-2xl font-bold uppercase tracking-widest text-gray-500">Our History</h2>
+                                </div>
+                                <div className="bg-gray-900/50 border border-gray-800 rounded-[2rem] p-8 md:p-12 relative overflow-hidden group">
+                                    <div className="absolute -left-6 top-0 bottom-0 w-1 bg-emerald-500/50 group-hover:bg-emerald-500 transition-colors hidden md:block" />
+                                    <p className="text-lg md:text-xl text-gray-300 leading-loose relative z-10 whitespace-pre-wrap">
+                                        {about?.history || "Founded with a vision to provide quality education, Shalom has grown from a small nursery into a full-fledged primary school with a legacy of excellence."}
+                                    </p>
+                                </div>
+                            </section>
+
                             <section>
                                 <div className="flex items-center gap-4 mb-6">
                                     <div className="w-12 h-12 bg-emerald-500/10 border border-emerald-500/20 rounded-xl flex items-center justify-center text-emerald-400">

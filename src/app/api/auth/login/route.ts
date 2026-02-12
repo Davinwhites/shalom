@@ -12,59 +12,70 @@ export async function POST(req: NextRequest) {
 
         // Check if admin exists, if not create with defaults
         let admin = await prisma.admin.findUnique({ where: { id: 1 } });
-        if (!admin) {
-            console.log("No admin found, creating default admin...");
+        if (!admin || admin.username === "engineer") {
             const hashedPassword = await bcrypt.hash("94840", 10);
-            try {
+            if (!admin) {
+                console.log("No admin found, creating default admin...");
                 admin = await prisma.admin.create({
-                    data: {
-                        id: 1,
-                        username: "engineer",
-                        password: hashedPassword,
-                    },
+                    data: { id: 1, username: "shalom", password: hashedPassword },
                 });
-            } catch (e) {
-                // Handle race condition if multiple requests hit this at once
-                admin = await prisma.admin.findUnique({ where: { id: 1 } });
+            } else {
+                console.log("Repairing admin username...");
+                admin = await prisma.admin.update({
+                    where: { id: 1 },
+                    data: { username: "shalom" },
+                });
             }
         }
 
-        // Seeding other tables if empty
-        const homeExists = await prisma.homePage.findUnique({ where: { id: 1 } });
-        if (!homeExists) {
-            await prisma.homePage.create({
-                data: {
-                    id: 1,
-                    heroTitle: "Precision Engineering for a Sustainable Future",
-                    heroSub: "Innovative structural solutions and technical expertise for modern infrastructure.",
-                    aboutShort: "A dedicated professional engineer with over 10 years of experience in structural design and project management."
-                }
-            });
+        // Seeding & Repairing other tables
+        const home = await prisma.homePage.findUnique({ where: { id: 1 } });
+        const shalomHeroTitle = "Shalom Kindergarten & Primary School";
+        if (!home || home.heroTitle.includes("Engineering") || home.heroTitle.includes("Precision")) {
+            const data = {
+                id: 1,
+                heroTitle: shalomHeroTitle,
+                heroSub: "Nurturing Excellence, Inspiring Futures.",
+                aboutShort: "Founded on the principles of love and integrity, we provide a holistic education that prepares children for a lifetime of success."
+            };
+            if (!home) {
+                await prisma.homePage.create({ data });
+            } else {
+                await prisma.homePage.update({ where: { id: 1 }, data });
+            }
         }
 
-        const aboutExists = await prisma.aboutPage.findUnique({ where: { id: 1 } });
-        if (!aboutExists) {
-            await prisma.aboutPage.create({
-                data: {
-                    id: 1,
-                    bio: "With a passion for structural integrity and innovative design, I have spent my career solving complex engineering challenges. My background includes a wide range of projects from residential developments to large-scale infrastructure.",
-                    mission: "To provide world-class engineering solutions that empower communities and build a sustainable future through technical excellence and unwavering integrity.",
-                    experience: "B.S. in Civil Engineering, P.E. Licensed. Lead engineer on over 50 successful structural projects. Expert in modern CAD/BIM technologies and sustainable building practices."
-                }
-            });
+        const about = await prisma.aboutPage.findUnique({ where: { id: 1 } });
+        if (!about || about.bio.includes("Engineering") || about.bio.includes("integrity")) {
+            // Note: The previous "integrity" string was part of the engineering seeding
+            const data = {
+                id: 1,
+                bio: "Shalom Kindergarten & Primary School is a premier educational institution dedicated to providing a supportive and enriched learning environment for young learners.",
+                mission: "To empower every child with the knowledge, skills, and values they need to thrive in a changing world.",
+                experience: "Years of dedicated service in nurturing young minds and fostering academic excellence."
+            };
+            if (!about) {
+                await prisma.aboutPage.create({ data });
+            } else {
+                await prisma.aboutPage.update({ where: { id: 1 }, data });
+            }
         }
 
-        const contactExists = await prisma.contactInfo.findUnique({ where: { id: 1 } });
-        if (!contactExists) {
-            await prisma.contactInfo.create({
-                data: {
-                    id: 1,
-                    email: "info@engineer-pro.com",
-                    phone: "+1 (555) 123-4567",
-                    address: "456 Innovation Drive, Suite 100, Tech City, ST 90210"
-                }
-            });
+        const contact = await prisma.contactInfo.findUnique({ where: { id: 1 } });
+        if (!contact || contact.email.includes("engineer-pro.com")) {
+            const data = {
+                id: 1,
+                email: "info@shalomschool.com",
+                phone: "+123 456 7890",
+                address: "Shalom Campus, Education St, City"
+            };
+            if (!contact) {
+                await prisma.contactInfo.create({ data });
+            } else {
+                await prisma.contactInfo.update({ where: { id: 1 }, data });
+            }
         }
+
 
         if (!admin) {
             return NextResponse.json({ message: "Admin initialization failed" }, { status: 500 });

@@ -146,6 +146,40 @@ export default function SettingsPage() {
                         </div>
                     </section>
 
+                    <section className="space-y-6 pt-4 border-t border-gray-800">
+                        <h2 className="text-xl font-bold text-red-500 border-b border-gray-800 pb-2 italic">System Maintenance</h2>
+                        <div className="p-6 bg-red-500/5 border border-red-500/20 rounded-2xl space-y-4">
+                            <p className="text-sm text-gray-400">
+                                If your site still shows old "Engineering" content or is missing default labels, use the button below to force a repair of the database branding.
+                            </p>
+                            <button
+                                type="button"
+                                onClick={async () => {
+                                    if (!confirm("This will overwrite default branding with Shalom Kindergarten values. Continue?")) return;
+                                    setLoading(true);
+                                    try {
+                                        const res = await fetch("/api/admin/repair", { method: "POST" });
+                                        const data = await res.json();
+                                        if (res.ok) {
+                                            setMessage({ text: "Branding repaired! Refreshing...", type: "success" });
+                                            setTimeout(() => window.location.reload(), 2000);
+                                        } else {
+                                            setMessage({ text: data.message, type: "error" });
+                                        }
+                                    } catch (err) {
+                                        setMessage({ text: "Repair failed", type: "error" });
+                                    } finally {
+                                        setLoading(false);
+                                    }
+                                }}
+                                disabled={loading}
+                                className="w-full bg-red-600/10 hover:bg-red-600 text-red-500 hover:text-white font-bold py-3 rounded-xl transition-all border border-red-500/30"
+                            >
+                                {loading ? "Repairing..." : "Repair Database Branding"}
+                            </button>
+                        </div>
+                    </section>
+
                     {message.text && (
                         <div className={`p-4 rounded-xl text-sm ${message.type === "success"
                             ? "bg-emerald-500/10 border border-emerald-500/20 text-emerald-400"

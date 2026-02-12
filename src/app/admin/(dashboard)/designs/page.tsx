@@ -119,15 +119,15 @@ export default function DesignsManager() {
         <div className="space-y-8">
             <BackButton />
             <div>
-                <h1 className="text-3xl font-bold">New Designs Showcase</h1>
-                <p className="text-gray-400 mt-2">Share your architectural and structural concepts with high-quality visual renders.</p>
+                <h1 className="text-3xl font-bold">School Gallery Showcase</h1>
+                <p className="text-gray-400 mt-2">Share school events and student activity highlights with high-quality photos.</p>
             </div>
 
             <div className={`bg-gray-900 border transition-all rounded-2xl p-6 shadow-sm ${editingDesign ? 'border-orange-500/50 bg-orange-500/5' : 'border-gray-800'}`}>
                 <div className="flex items-center justify-between mb-4">
                     <h2 className={`text-lg font-bold flex items-center gap-2 ${editingDesign ? 'text-orange-400' : 'text-emerald-400'}`}>
                         {editingDesign ? <PenTool className="w-5 h-5" /> : <Plus className="w-5 h-5" />}
-                        {editingDesign ? 'Edit Conceptual Design' : 'Add New Design'}
+                        {editingDesign ? 'Edit Showcase Item' : 'Add New Showcase'}
                     </h2>
                     {editingDesign && (
                         <button
@@ -241,7 +241,7 @@ export default function DesignsManager() {
                         <div className="p-4">
                             <div className="flex items-center gap-2 mb-2 text-emerald-400">
                                 <Layout className="w-4 h-4" />
-                                <span className="text-[10px] font-black uppercase tracking-widest">Concept Design</span>
+                                <span className="text-[10px] font-black uppercase tracking-widest">Gallery Item</span>
                             </div>
                             <h3 className="font-bold text-gray-100">{design.title}</h3>
                             <p className="text-xs text-gray-400 mt-2 line-clamp-2">{design.description}</p>

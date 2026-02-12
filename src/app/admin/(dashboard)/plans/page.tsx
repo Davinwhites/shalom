@@ -119,15 +119,15 @@ export default function PlansManager() {
         <div className="space-y-8">
             <BackButton />
             <div>
-                <h1 className="text-3xl font-bold">New Drawn Plans</h1>
-                <p className="text-gray-400 mt-2">Upload and manage your engineered drawings and blueprints.</p>
+                <h1 className="text-3xl font-bold">School Activity Plans</h1>
+                <p className="text-gray-400 mt-2">Upload and manage school curricular activities and lesson plans.</p>
             </div>
 
             <div className={`bg-gray-900 border transition-all rounded-2xl p-6 shadow-sm ${editingPlan ? 'border-orange-500/50 bg-orange-500/5' : 'border-gray-800'}`}>
                 <div className="flex items-center justify-between mb-4">
                     <h2 className={`text-lg font-bold flex items-center gap-2 ${editingPlan ? 'text-orange-400' : 'text-blue-400'}`}>
                         {editingPlan ? <PenTool className="w-5 h-5" /> : <Plus className="w-5 h-5" />}
-                        {editingPlan ? 'Edit Project Plan' : 'Add New Plan'}
+                        {editingPlan ? 'Edit Activity Plan' : 'Add New Plan'}
                     </h2>
                     {editingPlan && (
                         <button
@@ -247,7 +247,7 @@ export default function PlansManager() {
                         <div className="p-5">
                             <div className="flex items-center gap-2 mb-2">
                                 <PenTool className="w-4 h-4 text-blue-400" />
-                                <span className="text-xs font-bold text-gray-500 uppercase tracking-widest">Blueprint</span>
+                                <span className="text-xs font-bold text-gray-500 uppercase tracking-widest">School Plan</span>
                             </div>
                             <h3 className="text-xl font-bold text-gray-100">{plan.title}</h3>
                             <p className="text-sm text-gray-400 mt-2 line-clamp-2">{plan.description}</p>

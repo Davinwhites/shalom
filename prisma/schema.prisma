@@ -98,6 +98,7 @@ model SchoolEnvironment {
   description String
   icon        String?  // Emoji or Lucide icon name
   imageUrl    String?
+  videoUrl    String?
   order       Int      @default(0)
   createdAt   DateTime @default(now())
 }

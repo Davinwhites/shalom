@@ -88,6 +88,13 @@ export const EnvironmentItem = memo(function EnvironmentItem({
                 className="w-full bg-gray-900 border border-gray-800 rounded-lg px-3 py-2 text-xs uppercase tracking-widest text-indigo-400 focus:border-indigo-500 outline-none"
                 placeholder="Sub Label"
             />
+            <input
+                value={item.videoUrl || ""}
+                onChange={(e) => onUpdateState(item.id, { videoUrl: e.target.value })}
+                onBlur={() => onPersistUpdate(item.id)}
+                className="w-full bg-gray-900 border border-gray-800 rounded-lg px-3 py-2 text-xs text-indigo-300 focus:border-indigo-500 outline-none"
+                placeholder="Video URL (Optional: YouTube, MP4, etc.)"
+            />
             <textarea
                 value={item.description}
                 onChange={(e) => onUpdateState(item.id, { description: e.target.value })}

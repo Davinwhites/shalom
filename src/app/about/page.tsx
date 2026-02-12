@@ -147,9 +147,28 @@ export default async function AboutPage() {
                             <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
                                 {environment.map((item) => (
                                     <div key={item.id} className="bg-gray-900 rounded-[3rem] overflow-hidden group border border-gray-800 hover:border-blue-500/50 transition-all flex flex-col h-full shadow-2xl">
-                                        <div className="aspect-[4/3] bg-gray-800 flex items-center justify-center text-[10rem] group-hover:scale-110 transition-transform duration-1000 grayscale group-hover:grayscale-0 opacity-40 group-hover:opacity-100 relative">
-                                            <div className="absolute inset-0 bg-blue-500/10 mix-blend-overlay" />
-                                            {item.imageUrl ? (
+                                        <div className="aspect-[4/3] bg-gray-800 flex items-center justify-center text-[10rem] group-hover:scale-110 transition-transform duration-1000 relative">
+                                            <div className="absolute inset-0 bg-blue-500/5 mix-blend-overlay" />
+                                            {item.videoUrl ? (
+                                                <div className="w-full h-full relative z-10">
+                                                    {item.videoUrl.includes('youtube.com') || item.videoUrl.includes('youtu.be') ? (
+                                                        <iframe
+                                                            className="w-full h-full"
+                                                            src={item.videoUrl.replace('watch?v=', 'embed/').split('&')[0]}
+                                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                                            allowFullScreen
+                                                        />
+                                                    ) : (
+                                                        <video
+                                                            src={item.videoUrl}
+                                                            className="w-full h-full object-cover"
+                                                            controls
+                                                            muted
+                                                            playsInline
+                                                        />
+                                                    )}
+                                                </div>
+                                            ) : item.imageUrl ? (
                                                 <img src={item.imageUrl} alt={item.title} className="w-full h-full object-cover" />
                                             ) : (
                                                 item.icon || "🏫"

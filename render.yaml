@@ -1,20 +1,13 @@
-databases:
-  - name: engineer-db
-    databaseName: engineer
-    user: engineer
-    plan: free # or starter, standard, etc.
-
 services:
   - type: web
-    name: engineer-web
+    name: shalom-web
     env: node
-    plan: free # or starter, standard, etc.
+    plan: free
     buildCommand: npm install && npm run build
     startCommand: npm run db:push && npm start
     envVars:
       - key: DATABASE_URL
-        fromDatabase:
-          name: engineer-db
-          property: connectionString
+        # Value will be requested by Render during Blueprint setup
       - key: NODE_ENV
         value: production
+

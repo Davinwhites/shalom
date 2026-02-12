@@ -96,23 +96,23 @@ export default async function AboutPage() {
                     {staff.length > 0 && (
                         <section className="mt-40">
                             <div className="flex items-center gap-4 mb-20 justify-center">
-                                <div className="h-1 bg-gradient-to-r from-transparent via-amber-500 to-transparent flex-1 opacity-20" />
-                                <h2 className="text-3xl md:text-5xl font-black uppercase tracking-tighter italic whitespace-nowrap px-8">Our Leadership</h2>
-                                <div className="h-1 bg-gradient-to-r from-amber-500 via-transparent to-transparent flex-1 opacity-20" />
+                                <div className="h-1 bg-gradient-to-r from-transparent via-blue-500 to-transparent flex-1 opacity-20" />
+                                <h2 className="text-3xl md:text-5xl font-black uppercase tracking-tighter italic whitespace-nowrap px-8">Administrators</h2>
+                                <div className="h-1 bg-gradient-to-r from-blue-500 via-transparent to-transparent flex-1 opacity-20" />
                             </div>
 
                             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16">
                                 {staff.map((member, i) => (
                                     <div key={member.id} className="flex flex-col items-center text-center group">
-                                        <div className={`w-48 h-48 rounded-full bg-gradient-to-br from-gray-800 to-gray-900 mb-8 flex items-center justify-center text-6xl font-black text-white shadow-[0_20px_50px_rgba(0,0,0,0.3)] transform group-hover:scale-105 transition-all duration-500 border-8 border-gray-900 group-hover:border-amber-500/20 overflow-hidden`}>
+                                        <div className={`w-48 h-48 rounded-full bg-gradient-to-br from-gray-800 to-gray-900 mb-8 flex items-center justify-center text-6xl font-black text-white shadow-[0_20px_50px_rgba(0,0,0,0.3)] transform group-hover:scale-105 transition-all duration-500 border-8 border-gray-900 group-hover:border-blue-500/20 overflow-hidden`}>
                                             {member.imageUrl ? (
                                                 <img src={member.imageUrl} alt={member.name} className="w-full h-full object-cover" />
                                             ) : (
                                                 member.name.split(' ').map((n: string) => n[0]).join('')
                                             )}
                                         </div>
-                                        <h3 className="text-2xl font-bold mb-2 group-hover:text-amber-400 transition-colors uppercase italic tracking-tighter">{member.name}</h3>
-                                        <p className="text-amber-500 text-xs font-black uppercase tracking-[0.3em] mb-4 bg-amber-500/10 px-4 py-1 rounded-full">{member.title}</p>
+                                        <h3 className="text-2xl font-bold mb-2 group-hover:text-blue-400 transition-colors uppercase italic tracking-tighter">{member.name}</h3>
+                                        <p className="text-blue-500 text-xs font-black uppercase tracking-[0.3em] mb-4 bg-blue-500/10 px-4 py-1 rounded-full">{member.title}</p>
                                         <p className="text-gray-400 font-medium tracking-widest text-sm">{member.phone}</p>
                                     </div>
                                 ))}

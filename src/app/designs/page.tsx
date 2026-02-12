@@ -31,7 +31,7 @@ export default async function DesignsPage() {
                                         alt={design.title}
                                         className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-[2000ms]"
                                     />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-gray-950/90 via-gray-950/20 to-transparent flex flex-col justify-end p-8">
+                                    <div className="absolute inset-0 bg-gradient-to-t from-gray-950/60 via-transparent to-transparent flex flex-col justify-end p-8">
                                         <div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
                                             <div className="flex items-center gap-2 text-amber-400 mb-3">
                                                 <Layout className="w-4 h-4" />

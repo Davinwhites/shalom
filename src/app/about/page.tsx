@@ -148,7 +148,6 @@ export default async function AboutPage() {
                                 {environment.map((item) => (
                                     <div key={item.id} className="bg-gray-900 rounded-[3rem] overflow-hidden group border border-gray-800 hover:border-blue-500/50 transition-all flex flex-col h-full shadow-2xl">
                                         <div className="aspect-[4/3] bg-gray-800 flex items-center justify-center text-[10rem] group-hover:scale-110 transition-transform duration-1000 relative">
-                                            <div className="absolute inset-0 bg-blue-500/5 mix-blend-overlay" />
                                             {item.videoUrl ? (
                                                 <div className="w-full h-full relative z-10">
                                                     {item.videoUrl.includes('youtube.com') || item.videoUrl.includes('youtu.be') ? (

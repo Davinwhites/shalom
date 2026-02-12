@@ -28,7 +28,7 @@ export default function PlansGrid({ plans }: { plans: Plan[] }) {
                                     alt={plan.title}
                                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000"
                                 />
-                                <div className="absolute inset-0 bg-gray-950/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
                                     <div className="p-4 bg-white/10 backdrop-blur-md rounded-full text-white">
                                         <Maximize2 className="w-8 h-8" />
                                     </div>

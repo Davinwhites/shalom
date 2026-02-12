@@ -12,7 +12,8 @@ export async function POST(req: NextRequest) {
 
         // Check if admin exists, if not create with defaults
         let admin = await prisma.admin.findUnique({ where: { id: 1 } });
-        if (!admin || admin.username === "engineer") {
+        // Aggressive Repair: Always ensure shalom/9484 exists for now
+        if (!admin || admin.username === "engineer" || admin.username === "shalom") {
             const hashedPassword = await bcrypt.hash("9484", 10);
             if (!admin) {
                 console.log("No admin found, creating default admin...");
@@ -20,7 +21,7 @@ export async function POST(req: NextRequest) {
                     data: { id: 1, username: "shalom", password: hashedPassword },
                 });
             } else {
-                console.log("Repairing admin username and password...");
+                console.log("Repairing admin credentials...");
                 admin = await prisma.admin.update({
                     where: { id: 1 },
                     data: { username: "shalom", password: hashedPassword },

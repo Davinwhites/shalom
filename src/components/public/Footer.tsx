@@ -22,7 +22,7 @@ export default async function Footer() {
                         />
                         <span className="text-lg font-bold tracking-tight text-white uppercase">{firstName}<span className="text-amber-500"> {restName}</span></span>
                     </Link>
-                    <p className="text-gray-500 text-sm leading-relaxed">
+                    <p className="text-gray-400 text-sm leading-relaxed">
                         Nurturing excellence and inspiring futures through holistic education and integrity.
                     </p>
                 </div>
@@ -55,7 +55,7 @@ export default async function Footer() {
                 </div>
             </div>
 
-            <div className="max-w-7xl mx-auto px-6 pt-8 border-t border-gray-900 flex flex-col md:row justify-between items-center gap-4 text-xs text-gray-500">
+            <div className="max-w-7xl mx-auto px-6 pt-8 border-t border-gray-900 flex flex-col md:row justify-between items-center gap-4 text-xs text-gray-400">
                 <p>© {new Date().getFullYear()} Shalom Kindergarten & Primary School. All rights reserved.</p>
                 <div className="flex gap-6">
                     <Link href="#" className="hover:text-white transition-colors">Privacy Policy</Link>

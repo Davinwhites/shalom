@@ -13,7 +13,13 @@ export async function GET(req: NextRequest) {
     if (!about) {
         about = await prisma.aboutPage.create({ data: { id: 1 } });
     }
-    return NextResponse.json(about);
+
+    const home = await prisma.homePage.findUnique({ where: { id: 1 } });
+
+    return NextResponse.json({
+        ...about,
+        aboutShort: home?.aboutShort || ""
+    });
 }
 
 export async function PUT(req: NextRequest) {
@@ -22,6 +28,8 @@ export async function PUT(req: NextRequest) {
 
     try {
         const data = await req.json();
+
+        // Update About Page
         await prisma.aboutPage.update({
             where: { id: 1 },
             data: {
@@ -30,8 +38,18 @@ export async function PUT(req: NextRequest) {
                 experience: data.experience,
             },
         });
+
+        // Sync with Home Page (if aboutShort is provided)
+        if (data.aboutShort !== undefined) {
+            await prisma.homePage.update({
+                where: { id: 1 },
+                data: { aboutShort: data.aboutShort }
+            });
+        }
+
         return NextResponse.json({ success: true });
     } catch (error) {
-        return NextResponse.json({ message: "Failed to update about page" }, { status: 500 });
+        console.error("About Page Update Error:", error);
+        return NextResponse.json({ message: "Failed to update about page content" }, { status: 500 });
     }
 }

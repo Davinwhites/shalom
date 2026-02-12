@@ -9,6 +9,7 @@ export default function AboutEditor() {
         bio: "",
         mission: "",
         experience: "",
+        aboutShort: ""
     });
     const [staff, setStaff] = useState<any[]>([]);
     const [environment, setEnvironment] = useState<any[]>([]);
@@ -27,7 +28,13 @@ export default function AboutEditor() {
                 fetch("/api/admin/environment")
             ]);
 
-            setAboutData(await aboutRes.json());
+            const about = await aboutRes.json();
+            setAboutData({
+                bio: about.bio || "",
+                mission: about.mission || "",
+                experience: about.experience || "",
+                aboutShort: about.aboutShort || ""
+            });
             setStaff(await staffRes.json());
             setEnvironment(await envRes.json());
         } catch (error) {
@@ -48,7 +55,7 @@ export default function AboutEditor() {
             });
 
             if (res.ok) {
-                setMessage({ text: "About text updated successfully!", type: "success" });
+                setMessage({ text: "About page & Homepage sync updated successfully!", type: "success" });
             } else {
                 setMessage({ text: "Failed to update text", type: "error" });
             }
@@ -146,9 +153,22 @@ export default function AboutEditor() {
                 <form onSubmit={handleSaveAbout} className="space-y-6">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div className="md:col-span-2">
-                            <label className="block text-sm font-medium mb-2 text-gray-400">Biography</label>
+                            <label className="block text-sm font-medium mb-2 text-blue-400 font-bold uppercase tracking-widest">
+                                Homepage Introduction (Short Summary)
+                            </label>
+                            <p className="text-xs text-gray-500 mb-2 italic">This text will appear on the Homepage intro section.</p>
                             <textarea
-                                rows={4}
+                                rows={3}
+                                value={aboutData.aboutShort}
+                                onChange={(e) => setAboutData({ ...aboutData, aboutShort: e.target.value })}
+                                className="w-full bg-gray-950 border border-blue-500/20 rounded-2xl px-4 py-3 focus:border-blue-500 outline-none transition-all mb-4"
+                                placeholder="A brief summary for the home page..."
+                            />
+
+                            <label className="block text-sm font-medium mb-2 text-gray-400">Biography (Full Story)</label>
+                            <p className="text-xs text-gray-500 mb-2 italic">This text appears on the main About Page.</p>
+                            <textarea
+                                rows={6}
                                 value={aboutData.bio}
                                 onChange={(e) => setAboutData({ ...aboutData, bio: e.target.value })}
                                 className="w-full bg-gray-950 border border-gray-800 rounded-2xl px-4 py-3 focus:border-amber-500 outline-none transition-all"
